@@ -3,9 +3,15 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { createUserSession, getUserByEmail } from "@/db/queries";
 import { compare } from "bcryptjs";
 
+const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24; // 1 day
+
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
+    maxAge: SESSION_MAX_AGE_SECONDS,
+  },
+  jwt: {
+    maxAge: SESSION_MAX_AGE_SECONDS,
   },
   pages: {
     signIn: "/login",

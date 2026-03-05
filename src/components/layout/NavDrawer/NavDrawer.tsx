@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { BsChatDots } from "react-icons/bs";
-import { FaFileAlt, FaUserMd } from "react-icons/fa";
+import { FaCalendarDay } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 import { Box, VStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { NavGroup } from "./NavGroup";
@@ -14,17 +15,17 @@ const MENU_GROUPS = [
   {
     title: "Dashboard",
     items: [
-      { icon: FaUserMd, label: "Doctor Dashboard", href: "#" },
-      { icon: BsChatDots, label: "Chat", href: "#" },
+      { icon: FaHome, label: "Home", href: "/dashboard" },
+      { icon: FaCalendarDay, label: "Calendar", href: "/calendar" },
     ],
   },
   {
-    title: "Pages",
-    items: [{ icon: FaFileAlt, label: "Extra Pages", href: "#" }],
+    title: "Settings",
+    items: [{ icon: IoMdSettings, label: "My Settings", href: "/settings" }],
   },
 ];
 
-const NavDrawer = () => {
+export const NavDrawer = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
@@ -67,5 +68,3 @@ const NavDrawer = () => {
     </MotionBox>
   );
 };
-
-export default NavDrawer;

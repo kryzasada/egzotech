@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { Flex, HStack } from "@chakra-ui/react";
 import { Actions } from "./Actions";
-import UserMenu from "./UserMenu";
+import { UserMenu } from "./UserMenu";
 
-const Header = () => {
+export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -43,5 +43,3 @@ const Header = () => {
     </Flex>
   );
 };
-
-export default Header;

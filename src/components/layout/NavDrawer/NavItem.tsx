@@ -1,4 +1,5 @@
 import { IconType } from "react-icons";
+import { useRouter } from "next/navigation";
 import { Button, Icon, Text } from "@chakra-ui/react";
 import { Tooltip } from "@/components/ui";
 
@@ -6,9 +7,12 @@ interface NavItemProps {
   icon: IconType;
   label: string;
   isCollapsed: boolean;
+  href?: string;
 }
 
-export const NavItem = ({ icon, label, isCollapsed }: NavItemProps) => {
+export const NavItem = ({ icon, label, isCollapsed, href }: NavItemProps) => {
+  const router = useRouter();
+
   return (
     <Tooltip
       content={label}
@@ -23,6 +27,7 @@ export const NavItem = ({ icon, label, isCollapsed }: NavItemProps) => {
         w="full"
         h="48px"
         px={3}
+        onClick={() => href && router.push(href)}
       >
         <Icon as={icon} fontSize="xl" minW="24px" />
         <Text

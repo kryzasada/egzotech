@@ -1,38 +1,61 @@
-import { FaCog, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { useAuth } from "@/contexts/AuthContext";
-import { Box, HStack, Text } from "@chakra-ui/react";
+import { FaSignOutAlt } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { signOut } from "next-auth/react";
+import { Box, HStack, Skeleton, Text } from "@chakra-ui/react";
 import { Avatar, Button, Menu } from "@/components/ui";
+import { useCurrentUser } from "@/hooks/db";
 
 const USER_MENU_ITEMS = [
   {
     id: 1,
-    name: "Profile",
-    description: "View your profile",
-    icon: FaUser,
+    name: "Home",
+    description: "Home dashboard",
+    icon: FaHome,
+    href: "/dashboard",
   },
   {
     id: 2,
-    name: "Settings",
+    name: "My Settings",
     description: "Manage your account",
-    icon: FaCog,
+    icon: IoMdSettings,
+    href: "/settings",
   },
 ];
 
-const UserMenu = () => {
-  const { logout } = useAuth();
-  const name = "Bini Jet";
+export const UserMenu = () => {
+  const { data: userData, isLoading } = useCurrentUser();
+
+  console.log(userData);
+
+  const user = userData?.user;
+  const userType = userData?.userType;
+
+  const name =
+    user?.firstName && user?.lastName
+      ? `${user.firstName} ${user.lastName}`
+      : user?.firstName || "User";
+
   const displayName = name.length <= 10 ? name : name.split(" ")[0];
 
   const UserAvatar = (
     <HStack gap={3} _hover={{ opacity: 0.8 }}>
       <Avatar gender="female" size="sm" />
       <Box lineHeight="1.2">
-        <Text fontWeight="bold" fontSize="sm" color="text">
-          {displayName}
-        </Text>
-        <Text color="primary" fontSize="xs" fontWeight="medium">
-          Patient
-        </Text>
+        {isLoading ? (
+          <Skeleton height="20px" width="100px" mb={1} />
+        ) : (
+          <Text fontWeight="bold" fontSize="sm" color="text">
+            {displayName}
+          </Text>
+        )}
+        {isLoading ? (
+          <Skeleton height="16px" width="60px" />
+        ) : (
+          <Text color="primary" fontSize="xs" fontWeight="medium">
+            {userType?.name || "Patient"}
+          </Text>
+        )}
       </Box>
     </HStack>
   );
@@ -43,7 +66,7 @@ const UserMenu = () => {
         btnType="fill"
         variant="primary"
         rightIcon={FaSignOutAlt}
-        onClick={logout}
+        onClick={() => signOut({ callbackUrl: "/login" })}
       >
         Logout
       </Button>
@@ -59,5 +82,3 @@ const UserMenu = () => {
     />
   );
 };
-
-export default UserMenu;

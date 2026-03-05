@@ -41,5 +41,3 @@ export const useRegisterUser = () => {
     },
   });
 };
-
-export default useRegisterUser;

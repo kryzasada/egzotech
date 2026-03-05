@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Flex, Text } from "@chakra-ui/react";
 
-const Footer = () => {
+export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -31,5 +31,3 @@ const Footer = () => {
     </Flex>
   );
 };
-
-export default Footer;

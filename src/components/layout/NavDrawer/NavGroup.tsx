@@ -40,6 +40,7 @@ export const NavGroup = ({ title, items, isCollapsed }: NavGroupProps) => {
           icon={item.icon}
           label={item.label}
           isCollapsed={isCollapsed}
+          href={item.href}
         />
       ))}
     </Box>

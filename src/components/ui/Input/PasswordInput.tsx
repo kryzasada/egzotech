@@ -21,6 +21,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         w="full"
         endElement={
           <IconButton
+            type="button"
             aria-label={showPassword ? "Hide password" : "Show password"}
             variant="ghost"
             onClick={handleTogglePassword}

@@ -1,5 +1,8 @@
+"use client";
+
 import { ReactNode } from "react";
 import { IconType } from "react-icons";
+import { useRouter } from "next/navigation";
 import {
   Badge,
   Box,
@@ -17,6 +20,7 @@ export interface MenuItemData {
   description?: string;
   icon?: ReactNode | IconType;
   timestamp?: string;
+  href?: string;
 }
 
 interface MenuProps {
@@ -36,6 +40,8 @@ export const Menu = ({
   emptyDescription = "",
   counter = false,
 }: MenuProps) => {
+  const router = useRouter();
+
   return (
     <ChakraMenu.Root>
       <ChakraMenu.Trigger asChild>
@@ -79,6 +85,7 @@ export const Menu = ({
                   cursor="pointer"
                   _hover={{ opacity: 0.6 }}
                   bg="white"
+                  onClick={() => item.href && router.push(item.href)}
                 >
                   <HStack gap={3} w="full" align="start" alignItems="center">
                     {item.icon && (
