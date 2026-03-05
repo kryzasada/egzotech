@@ -8,14 +8,18 @@ interface CardProps extends ChakraCard.RootProps {
 
 export const Card = (props: CardProps) => {
   const { children, type = "primary", ...rest } = props;
+
   return (
     <ChakraCard.Root
       h={"full"}
       px={"21px"}
       py={type === "primary" ? "21px" : 3.5}
       mt={"7px"}
-      bg={type === "primary" ? "background" : "primary"}
-      borderRadius={type === "primary" ? "sm" : "md"}
+      bg={type === "primary" ? "white" : "primary"}
+      borderRadius={"xl"}
+      borderColor={"none"}
+      borderWidth={0}
+      shadow={"none"}
       {...rest}
     >
       <ChakraCard.Body gap={2} p={0} h={"full"}>

@@ -33,7 +33,7 @@ export const Header = () => {
       maxW={isScrolled ? "100%" : "97%"}
       mt={isScrolled ? 0 : 5}
       transition="all 0.3s ease-in-out"
-      borderRadius={isScrolled ? 0 : 2.5}
+      borderRadius={isScrolled ? 0 : "xl"}
       bg="white"
     >
       <HStack gap={8}>

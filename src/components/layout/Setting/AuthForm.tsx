@@ -91,14 +91,7 @@ export const AuthForm = () => {
   ];
 
   return (
-    <Card
-      bg="white"
-      borderRadius="md"
-      borderColor="white"
-      px={4}
-      py={4}
-      w="full"
-    >
+    <Card type="primary" w="full">
       <Heading size="md" fontWeight="bold" color="text">
         Authentication Data
       </Heading>

@@ -125,14 +125,7 @@ export const PersonalForm = () => {
   ];
 
   return (
-    <Card
-      bg="white"
-      borderRadius="md"
-      borderColor="white"
-      px={4}
-      py={4}
-      w="full"
-    >
+    <Card type="primary" px={4} py={4} w="full">
       <Heading size="md" fontWeight="bold" color="text">
         Personal Data
       </Heading>
@@ -153,10 +146,10 @@ export const PersonalForm = () => {
                     value={String(formValues[field.key] ?? "")}
                     onChange={(e) =>
                       field.onChange
-                        ? field.onChange(e.target.value)
+                        ? field.onChange(e.target.value.trim())
                         : setFormValues({
                             ...formValues,
-                            [field.key]: e.target.value,
+                            [field.key]: e.target.value.trim(),
                           })
                     }
                     aria-invalid={field.isInvalid}

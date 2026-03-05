@@ -30,7 +30,7 @@ export const users = pgTable("users", {
     .references(() => userTypes.id),
   firstName: varchar("first_name", { length: 100 }),
   lastName: varchar("last_name", { length: 100 }),
-  dateOfBirth: date("date_of_birth"),
+  dateOfBirth: date("date_of_birth").default("1988-02-17"),
   height: integer("height").default(75),
   weight: integer("weight").default(180),
   isActive: boolean("is_active").default(true).notNull(),

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
@@ -25,20 +26,18 @@ const USER_MENU_ITEMS = [
 
 export const UserMenu = () => {
   const { data: userData, isLoading } = useCurrentUser();
+  const { data: userProfile } = useCurrentUser();
 
-  const user = userData?.user;
   const userType = userData?.userType;
 
-  const name =
-    user?.firstName && user?.lastName
-      ? `${user.firstName} ${user.lastName}`
-      : user?.firstName || "";
-
-  const displayName = name.length <= 20 ? name : name.split(" ")[0];
+  const displayName = useMemo(() => {
+    const name = `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}`;
+    return name.length <= 20 ? name : name.split(" ")[0];
+  }, [userProfile]);
 
   const UserAvatar = (
     <HStack gap={3} _hover={{ opacity: 0.8 }}>
-      <Avatar gender="female" size="sm" />
+      <Avatar gender={userProfile?.user?.gender ?? "male"} size="sm" />
       <Box lineHeight="1.2">
         {isLoading ? (
           <Skeleton height="20px" width="100px" mb={1} />

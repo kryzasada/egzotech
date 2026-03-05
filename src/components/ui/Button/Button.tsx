@@ -20,7 +20,7 @@ interface ButtonProps extends Omit<ChakraButtonProps, "variant" | "rightIcon"> {
   variant?: ButtonVariant;
   btnType?: ButtonType;
   rightIcon?: ElementType;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 const variantColors: Record<ButtonVariant, string> = {

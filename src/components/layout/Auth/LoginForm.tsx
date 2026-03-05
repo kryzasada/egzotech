@@ -1,6 +1,6 @@
 "use client";
 
-import { ComponentProps, Suspense, useEffect, useState } from "react";
+import { ComponentProps, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -19,17 +19,9 @@ import {
 } from "@chakra-ui/react";
 import { Button, Input } from "@/components/ui";
 
-export const LoginForm = () => {
-  return (
-    <Suspense>
-      <LoginFormContent />
-    </Suspense>
-  );
-};
-
 type FormSubmitHandler = NonNullable<ComponentProps<typeof Box>["onSubmit"]>;
 
-const LoginFormContent = () => {
+export const LoginForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -132,7 +124,7 @@ const LoginFormContent = () => {
                   type={field.type}
                   placeholder={field.placeholder}
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={(e) => field.onChange(e.target.value.trim())}
                   onValidationChange={field.onValidationChange}
                   aria-invalid={field.isInvalid}
                 />

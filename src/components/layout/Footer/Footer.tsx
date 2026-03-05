@@ -14,7 +14,7 @@ export const Footer = () => {
       align="center"
       mx="auto"
       maxW={"97%"}
-      borderRadius={2.5}
+      borderRadius={"xl"}
       bg="white"
       mb={5}
     >

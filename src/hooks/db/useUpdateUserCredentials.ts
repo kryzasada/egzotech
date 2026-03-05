@@ -1,9 +1,10 @@
 import { useSession } from "next-auth/react";
 import { updateUserCredentials } from "@/db/queries/data";
 import { AuthFormSchema } from "@/lib/validations";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useUpdateUserCredentials = () => {
+  const queryClient = useQueryClient();
   const { status } = useSession();
   const isAuthenticated = status === "authenticated";
 
@@ -19,6 +20,9 @@ export const useUpdateUserCredentials = () => {
     onSuccess: () => {},
     onError: (error) => {
       console.error(error);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ["current-user"] });
     },
   });
 };

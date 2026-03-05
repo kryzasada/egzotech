@@ -132,7 +132,7 @@ export const RegisterForm = () => {
                   type={field.type}
                   placeholder={field.placeholder}
                   value={field.value}
-                  onChange={(e) => field.onChange(e.target.value)}
+                  onChange={(e) => field.onChange(e.target.value.trim())}
                   onValidationChange={field.onValidationChange}
                   aria-invalid={field.isInvalid}
                 />

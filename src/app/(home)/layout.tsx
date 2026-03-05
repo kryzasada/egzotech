@@ -16,7 +16,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           borderStartRadius={"2xl"}
         >
           <Header />
-          <Box flex={1} p={4}>
+          <Box flex={1} maxW={"97%"} w="full" mx="auto" mt={5}>
             {children}
           </Box>
           <Footer />
