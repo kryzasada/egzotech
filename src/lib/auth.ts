@@ -1,6 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { createUserSession, getUserByEmail } from "@/db/queries";
+import { createUserSession, getUserByEmail } from "@/db/queries/auth";
 import { compare } from "bcryptjs";
 
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24; // 1 day
@@ -59,7 +59,10 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    async session({ session }) {
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.sub ?? "";
+      }
       return session;
     },
   },

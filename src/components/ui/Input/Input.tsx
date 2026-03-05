@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, forwardRef, useEffect, useMemo, useState } from "react";
 import {
   Input as ChakraInput,
   InputProps as ChakraInputProps,
@@ -40,7 +40,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       return <PasswordInput ref={ref} {...props} />;
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value);
       props.onChange?.(e);
     };

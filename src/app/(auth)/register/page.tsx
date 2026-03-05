@@ -1,6 +1,4 @@
-"use client";
-
-import { RegisterForm } from "@/components/auth";
+import { RegisterForm } from "@/components/layout";
 
 export const RegisterPage = () => {
   return <RegisterForm />;

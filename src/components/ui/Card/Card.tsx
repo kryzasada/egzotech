@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import { Card as ChakraCard } from "@chakra-ui/react";
 
 interface CardProps extends ChakraCard.RootProps {
-  children: React.ReactNode;
+  children: ReactNode;
   type?: "primary" | "secondary";
 }
 

@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
 import { Box, Flex } from "@chakra-ui/react";
-import { AuthSpinner } from "@/components/auth";
 import { Footer, Header, NavDrawer } from "@/components/layout";
+import { AuthSpinner } from "@/components/layout";
 
-const HomeLayout = ({ children }: { children: React.ReactNode }) => {
+const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
     <AuthSpinner>
       <Flex minH="100vh" bg="primary">
@@ -15,7 +16,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
           borderStartRadius={"2xl"}
         >
           <Header />
-          <Box flex={1} p={6}>
+          <Box flex={1} p={4}>
             {children}
           </Box>
           <Footer />

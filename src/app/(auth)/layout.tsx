@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import Image from "next/image";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
-const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
     <Flex
       minH="100vh"

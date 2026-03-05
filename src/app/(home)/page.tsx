@@ -1,4 +1,4 @@
-import { AuthSpinner } from "@/components/auth";
+import { AuthSpinner } from "@/components/layout";
 
 const Home = () => {
   return <AuthSpinner isDashboard />;
