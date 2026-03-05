@@ -1,5 +1,4 @@
 import {
-  FaArrowRight,
   FaCheck,
   FaExclamationTriangle,
   FaInfoCircle,

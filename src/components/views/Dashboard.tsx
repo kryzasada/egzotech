@@ -1,47 +1,27 @@
 "use client";
 
-import { useAuth } from "@/contexts/AuthContext";
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
+import Footer from "@/components/layout/Footer/Footer";
+import Header from "@/components/layout/Header/Header";
+import NavDrawer from "@/components/layout/NavDrawer/NavDrawer";
 
 export const Dashboard = () => {
-  const { logout } = useAuth();
-
   return (
-    <Box minH="100vh" bg="gray.50" p={8}>
-      <Container maxW="container.lg">
-        <VStack gap={8} align="stretch">
-          <Box
-            p={6}
-            bg="white"
-            borderRadius="lg"
-            boxShadow="sm"
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            <Heading size="md">Dashboard</Heading>
-            <Button variant="outline" colorScheme="red" onClick={logout}>
-              Log Out
-            </Button>
-          </Box>
-
-          <Box p={6} bg="white" borderRadius="lg" boxShadow="sm">
-            <Heading size="lg" mb={4}>
-              Welcome back!
-            </Heading>
-            <Text color="gray.600">
-              You have successfully logged in. This is your dashboard view.
-            </Text>
-          </Box>
-        </VStack>
-      </Container>
-    </Box>
+    <Flex minH="100vh" bg="primary">
+      <NavDrawer />
+      <Flex
+        direction="column"
+        flex={1}
+        position="relative"
+        bg="background"
+        borderStartRadius={"2xl"}
+      >
+        <Header />
+        <Box flex={1} p={6}>
+          {/* Main content area */}
+        </Box>
+        <Footer />
+      </Flex>
+    </Flex>
   );
 };

@@ -1,7 +1,7 @@
-import { createUserSession, getUserByEmail } from "@/db/queries";
-import { compare } from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { createUserSession, getUserByEmail } from "@/db/queries";
+import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -53,7 +53,7 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session }) {
       return session;
     },
   },
