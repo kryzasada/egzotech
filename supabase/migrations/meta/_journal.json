@@ -8,6 +8,13 @@
       "when": 1772667870067,
       "tag": "0000_opposite_odin",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1772740612663,
+      "tag": "0001_lucky_vision",
+      "breakpoints": true
     }
   ]
 }

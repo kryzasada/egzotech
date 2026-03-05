@@ -27,3 +27,24 @@ export enum USERTYPE {
   Doctor = "Doctor",
   Admin = "Admin",
 }
+
+export interface DataFieldConfig<T extends Record<string, string | number>> {
+  label: string;
+  key: keyof T;
+  type: InputType;
+  placeholder: string;
+  isInvalid?: boolean;
+  onChange?: (value: string) => void;
+}
+
+export enum PERSONAL_FORM_ERROR_MESSAGE {
+  UpdateFailed = "Failed to update data. Please try again later",
+  HeightInvalid = "Height must be between 100 and 250 cm",
+  WeightInvalid = "Weight must be between 20 and 500 kg",
+}
+
+export enum AUTH_FORM_ERROR_MESSAGE {
+  UpdateFailed = "Failed to update data. Please try again later",
+  PasswordInvalid = "Password must be at least 8 characters, uppercase letter and number",
+  PasswordsDoNotMatch = "Passwords do not match",
+}

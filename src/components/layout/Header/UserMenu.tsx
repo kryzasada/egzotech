@@ -26,17 +26,15 @@ const USER_MENU_ITEMS = [
 export const UserMenu = () => {
   const { data: userData, isLoading } = useCurrentUser();
 
-  console.log(userData);
-
   const user = userData?.user;
   const userType = userData?.userType;
 
   const name =
     user?.firstName && user?.lastName
       ? `${user.firstName} ${user.lastName}`
-      : user?.firstName || "User";
+      : user?.firstName || "";
 
-  const displayName = name.length <= 10 ? name : name.split(" ")[0];
+  const displayName = name.length <= 20 ? name : name.split(" ")[0];
 
   const UserAvatar = (
     <HStack gap={3} _hover={{ opacity: 0.8 }}>

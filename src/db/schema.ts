@@ -11,11 +11,11 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
+export const genderEnum = pgEnum("gender", ["female", "male"]);
+
 /*
  Tables
 */
-export const genderEnum = pgEnum("gender", ["female", "male"]);
-
 export const userTypes = pgTable("user_types", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: varchar("name", { length: 100 }).notNull().unique(),
@@ -24,13 +24,15 @@ export const userTypes = pgTable("user_types", {
 
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
-  // gender: genderEnum("gender"),
+  gender: genderEnum("gender").default("male"),
   userTypeId: uuid("user_type_id")
     .notNull()
     .references(() => userTypes.id),
   firstName: varchar("first_name", { length: 100 }),
   lastName: varchar("last_name", { length: 100 }),
   dateOfBirth: date("date_of_birth"),
+  height: integer("height").default(75),
+  weight: integer("weight").default(180),
   isActive: boolean("is_active").default(true).notNull(),
   isVerified: boolean("is_verified").default(true).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
