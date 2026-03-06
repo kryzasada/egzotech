@@ -5,7 +5,7 @@ import {
   PersonalInformationCard,
 } from "@/components/layout";
 
-export const DashboardPage = () => {
+export default function DashboardPage() {
   return (
     <Grid templateColumns={{ base: "1fr", xl: "1fr 3fr" }} gap={4} w="full">
       <Grid
@@ -21,6 +21,4 @@ export const DashboardPage = () => {
       </Flex>
     </Grid>
   );
-};
-
-export default DashboardPage;
+}

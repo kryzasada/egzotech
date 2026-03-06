@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 
-const AuthLayout = ({ children }: { children: ReactNode }) => {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <Flex
       minH="100vh"
@@ -60,6 +60,4 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
       </Flex>
     </Flex>
   );
-};
-
-export default AuthLayout;
+}

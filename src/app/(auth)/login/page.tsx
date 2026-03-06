@@ -1,7 +1,10 @@
+import { Suspense } from "react";
 import { LoginForm } from "@/components/layout";
 
-export const LoginPage = () => {
-  return <LoginForm />;
-};
-
-export default LoginPage;
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
+  );
+}

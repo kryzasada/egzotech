@@ -1,7 +1,5 @@
 import { AuthSpinner } from "@/components/layout";
 
-const Home = () => {
+export default function Home() {
   return <AuthSpinner isDashboard />;
-};
-
-export default Home;
+}

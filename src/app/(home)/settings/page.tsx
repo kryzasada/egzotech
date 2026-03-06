@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import { AuthForm, PersonalForm } from "@/components/layout/";
 
-export const SettingsPage = () => {
+export default function SettingsPage() {
   return (
     <Flex
       gap={4}
@@ -13,6 +13,4 @@ export const SettingsPage = () => {
       <AuthForm />
     </Flex>
   );
-};
-
-export default SettingsPage;
+}

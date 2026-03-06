@@ -1,7 +1,5 @@
 import { DailyExercisesCard } from "@/components/layout";
 
-export const DashboardPage = () => {
+export default function ExercisesPage() {
   return <DailyExercisesCard />;
-};
-
-export default DashboardPage;
+}

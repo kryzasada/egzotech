@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import NavDrawer from "./NavDrawer";
+import { NavDrawer } from "./NavDrawer";
 
 const meta = {
   title: "Layout/NavDrawer",

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import Footer from "./Footer";
+import { Footer } from "./Footer";
 
 const meta = {
   title: "Layout/Footer",

@@ -1,7 +1,5 @@
 import { RegisterForm } from "@/components/layout";
 
-export const RegisterPage = () => {
+export default function RegisterPage() {
   return <RegisterForm />;
-};
-
-export default RegisterPage;
+}

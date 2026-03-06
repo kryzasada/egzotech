@@ -3,7 +3,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { Footer, Header, NavDrawer } from "@/components/layout";
 import { AuthSpinner } from "@/components/layout";
 
-const HomeLayout = ({ children }: { children: ReactNode }) => {
+export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
     <AuthSpinner>
       <Flex minH="100vh" bg="primary">
@@ -24,6 +24,4 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       </Flex>
     </AuthSpinner>
   );
-};
-
-export default HomeLayout;
+}
