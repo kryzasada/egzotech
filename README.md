@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EGZOTech
 
-## Getting Started
+Recruitment Task
 
-First, run the development server:
+[Demo](https://egzotech-notification.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   - Frontend - `Next.js`
+   - Backend - `Next.js`
+   - Database - `Supabase` (Drizzle ORM)
+   - Language - `typescript`
+   <br />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   - Auth - `bcryptjs` and `next-auth` with JWT
+   - Data validation - `zod`
+   - UI - `chakra-ui`
+   - UI Docs - `storybook`
+   - Data fetching - `tanstack/react-query`
+   - Package Manager - `pnpm`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation and run
 
-## Learn More
+1. Start application
+   ```cmd
+   git clone https://github.com/kryzasada/egzotech
+   cd egzotech
+   pnpm install
+   pnpm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Start storybook
+   ```cmd
+   pnpm run storybook
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Production deployment notes
 
-## Deploy on Vercel
+This application was designed and built with production deployment in mind. However, the following improvements should be considered before going live:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Email verification** — The registration flow currently does not require email address confirmation. Adding this step would improve security and ensure valid contact details.
+- **User profile data** — During registration, optional fields such as gender, weight, and height are not collected. Extending the form would provide more complete user profiles for the application.
+- **Failed login attempts** — There is no mechanism to track or limit invalid login attempts (e.g. rate limiting or temporary lockouts). Implementing this would help protect against brute-force attacks.
+- **JWT token refresh** — The current approach should be updated to use refresh tokens stored in the database instead of relying solely on JWT expiration.
+- **Database security** — Additional security measures are recommended, especially for the `user_credentials` table, such as encryption of sensitive fields and stricter access controls.
+- **Database normalization** — The database structure should be reviewed for normalization.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database schema
+![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/supabase-schema.svg)
+
+## Application
+
+#### Register Page
+![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-register.png)
+
+#### Home Page
+![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-home.png)
+
+#### Setting Page
+![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-settings.png)
+
+#### Exercises Page
+![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-exercises.png)
+
+#### Exercise Task Modal
+![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-exercise-task.png)
