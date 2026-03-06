@@ -28,8 +28,12 @@ export const ProfileCard = () => {
   return (
     <Card type="primary" px={4} py={4}>
       <Flex direction="column" gap={4} align="center">
-        <Avatar gender="male" size="lg" background />
-        <Text fontSize="sm" fontWeight="bold" color="text">
+        <Avatar
+          gender={userData?.user?.gender as "male" | "female"}
+          size="lg"
+          background
+        />
+        <Text fontSize="md" fontWeight="bold" color="text">
           {userData?.user?.firstName ?? "--"} {userData?.user?.lastName ?? "--"}
         </Text>
         <Flex gap={6}>

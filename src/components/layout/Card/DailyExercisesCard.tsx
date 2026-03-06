@@ -20,7 +20,7 @@ export const DailyExercisesCard = () => {
     <Card type="primary" px={{ base: 0, sm: 4 }} py={4} h="min-content">
       <Flex direction="column" gap={4}>
         <Heading
-          fontSize="sm"
+          fontSize="md"
           fontWeight="bold"
           color="text"
           px={{ base: 4, sm: 0 }}

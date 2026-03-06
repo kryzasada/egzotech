@@ -57,7 +57,7 @@ export const RegisterForm = () => {
       },
       onError: (error) => {
         console.error(error);
-        setError(REGISTER_USER_ERROR_MESSAGE.RegisterError);
+        setError(error.message.toString());
       },
     });
   };

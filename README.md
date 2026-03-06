@@ -2,7 +2,7 @@
 
 Recruitment Task
 
-[Demo](https://egzotech-notification.vercel.app/)
+[Demo](https://egzotech.vercel.app)
 
 ## Technologies
 
@@ -16,7 +16,7 @@ Recruitment Task
    - Data validation - `zod`
    - UI - `chakra-ui`
    - UI Docs - `storybook`
-   - Data fetching - `tanstack/react-query`
+   - Data Fetching - `tanstack/react-query`
    - Package Manager - `pnpm`
 
 ## Installation and run
@@ -39,29 +39,29 @@ Recruitment Task
 
 This application was designed and built with production deployment in mind. However, the following improvements should be considered before going live:
 
-- **Email verification** — The registration flow currently does not require email address confirmation. Adding this step would improve security and ensure valid contact details.
-- **User profile data** — During registration, optional fields such as gender, weight, and height are not collected. Extending the form would provide more complete user profiles for the application.
-- **Failed login attempts** — There is no mechanism to track or limit invalid login attempts (e.g. rate limiting or temporary lockouts). Implementing this would help protect against brute-force attacks.
-- **JWT token refresh** — The current approach should be updated to use refresh tokens stored in the database instead of relying solely on JWT expiration.
-- **Database security** — Additional security measures are recommended, especially for the `user_credentials` table, such as encryption of sensitive fields and stricter access controls.
-- **Database normalization** — The database structure should be reviewed for normalization.
+- **Email verification** — Add email confirmation to the registration flow to prevent fake or mistyped addresses.
+- **User profile data** — Extend the registration form to collect optional profile fields only if they are required by the product
+- **Failed login attempts** — Add rate limiting and temporary lockouts to reduce brute-force risk
+- **JWT token refresh** — Implement refresh token rotation with server-side revocation stored in the database
+- **Database security** — Restrict access to user_credentials using least-privilege policies and audit-friendly controls.
+- **Database normalization** — The database structure should be reviewed for normalization
 
 ## Database schema
-![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/supabase-schema.svg)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketing/supabase-schema.svg)
 
 ## Application
 
 #### Register Page
-![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-register.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketing/EGZOTech-register.png)
 
 #### Home Page
-![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-home.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketing/EGZOTech-home.png)
 
 #### Setting Page
-![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-settings.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketing/EGZOTech-settings.png)
 
 #### Exercises Page
-![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-exercises.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketing/EGZOTech-exercises.png)
 
 #### Exercise Task Modal
-![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-exercise-task.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketing/EGZOTech-exercise-started.png)

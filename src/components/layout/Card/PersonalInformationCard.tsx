@@ -3,6 +3,7 @@
 import { Box, Flex, For, Heading, Separator } from "@chakra-ui/react";
 import { Card } from "@/components/ui";
 import { useCurrentUser } from "@/hooks/db";
+import { formatDate } from "@/helpers/date";
 import { CardItem, CardItemData } from "./CardItem";
 
 export const PersonalInformationCard = () => {
@@ -19,7 +20,7 @@ export const PersonalInformationCard = () => {
     },
     {
       title: "Birthday:",
-      value: userData?.user?.dateOfBirth ?? "--",
+      value: formatDate(userData?.user?.dateOfBirth),
     },
     {
       title: "Gender:",
@@ -38,7 +39,7 @@ export const PersonalInformationCard = () => {
     <Card type="primary" px={4} py={4}>
       <Flex direction="column" gap={4}>
         <Box>
-          <Heading size="sm" color="text">
+          <Heading size="md" color="text">
             Personal Information
           </Heading>
           <Separator my={4} color="background" />

@@ -149,15 +149,12 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   loginAttempts: many(loginAttempts),
 }));
 
-export const loginAttemptsRelations = relations(
-  loginAttempts,
-  ({ one }) => ({
-    user: one(users, {
-      fields: [loginAttempts.userId],
-      references: [users.id],
-    }),
+export const loginAttemptsRelations = relations(loginAttempts, ({ one }) => ({
+  user: one(users, {
+    fields: [loginAttempts.userId],
+    references: [users.id],
   }),
-);
+}));
 
 export const userTypesRelations = relations(userTypes, ({ many }) => ({
   users: many(users),
