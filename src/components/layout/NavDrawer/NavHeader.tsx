@@ -16,7 +16,7 @@ export const NavHeader = ({ isCollapsed, onToggle }: NavHeaderProps) => {
       p={3}
       mb={6}
       mt={3}
-      h="80px"
+      h={20}
       w="full"
       minW={12}
       gap={isCollapsed ? 0 : 4}

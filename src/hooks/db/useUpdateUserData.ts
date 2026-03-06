@@ -12,7 +12,7 @@ export const useUpdateUserData = () => {
   return useMutation({
     mutationKey: ["update-user-data"],
     mutationFn: async (userData: PersonalFormSchema) => {
-      if (!isAuthenticated) return new Error(UNAUTHORIZED);
+      if (!isAuthenticated) throw new Error(UNAUTHORIZED);
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 

@@ -95,6 +95,26 @@ export const ExercisesItem = ({
 
 ExercisesItem.displayName = "ExercisesItem";
 
+export const ExercisesErrorItem = () => {
+  return (
+    <Table.Row>
+      <Table.Cell
+        colSpan={5}
+        align="center"
+        my={2}
+        px={4}
+        h="40px"
+        gap={4}
+        w="full"
+      >
+        <Text my={2} px={4} fontSize="xs" color="red.500" textAlign="center">
+          Failed to load exercises
+        </Text>
+      </Table.Cell>
+    </Table.Row>
+  );
+};
+
 export const NoExercisesItem = () => {
   return (
     <Table.Row>

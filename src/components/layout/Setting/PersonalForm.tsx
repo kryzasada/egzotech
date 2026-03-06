@@ -1,6 +1,6 @@
 "use client";
 
-import { ComponentProps, useMemo, useState } from "react";
+import { ComponentProps, useEffect, useMemo, useState } from "react";
 import { PERSONAL_FORM_ERROR_MESSAGE } from "@/consts";
 import { personalFormSchema } from "@/lib/validations";
 import { type DataFieldConfig } from "@/types";
@@ -50,6 +50,10 @@ export const PersonalForm = () => {
   );
   const [formValues, setFormValues] = useState(defaultValues);
 
+  useEffect(() => {
+    setFormValues(defaultValues);
+  }, [defaultValues]);
+
   const handleSave: FormSubmitHandler = (event) => {
     event?.preventDefault();
     setError("");
@@ -57,7 +61,6 @@ export const PersonalForm = () => {
 
     if (!validation.success) {
       setError(validation.error.issues[0].message);
-      console.log(validation.error.issues[0].message);
       return;
     }
 

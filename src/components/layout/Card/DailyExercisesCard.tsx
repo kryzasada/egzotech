@@ -6,13 +6,14 @@ import { Card } from "@/components/ui";
 import { useUserExercises } from "@/hooks/db";
 import { ExercisesHeader } from "./ExercisesHeader";
 import {
+  ExercisesErrorItem,
   ExercisesItem,
   LoadingExercisesItem,
   NoExercisesItem,
 } from "./ExercisesItem";
 
 export const DailyExercisesCard = () => {
-  const { data: userExercises = [], isLoading } = useUserExercises();
+  const { data: userExercises = [], isLoading, isError } = useUserExercises();
   const [disabled, setDisabled] = useState(false);
 
   return (
@@ -35,7 +36,9 @@ export const DailyExercisesCard = () => {
 
             <Table.Body>
               {isLoading && <LoadingExercisesItem />}
+              {!isLoading && isError && <ExercisesErrorItem />}
               {!isLoading &&
+                !isError &&
                 (userExercises?.length > 0 ? (
                   userExercises?.map((item) => (
                     <ExercisesItem

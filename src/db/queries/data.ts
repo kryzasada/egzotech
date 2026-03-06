@@ -16,6 +16,8 @@ import { and, eq } from "drizzle-orm";
 
 export const getUserProfile = async () => {
   const { session } = await requireUser();
+  const email = session.user?.email;
+  if (!email) throw new Error("UNAUTHORIZED");
 
   const result = await db
     .select({
@@ -26,7 +28,7 @@ export const getUserProfile = async () => {
     .from(users)
     .innerJoin(userCredentials, eq(users.id, userCredentials.userId))
     .innerJoin(userTypes, eq(users.userTypeId, userTypes.id))
-    .where(eq(userCredentials.email, session.user.email!));
+    .where(eq(userCredentials.email, email));
 
   return result[0];
 };

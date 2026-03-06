@@ -40,14 +40,14 @@ export const UserMenu = () => {
       <Avatar gender={userProfile?.user?.gender ?? "male"} size="sm" />
       <Box lineHeight="1.2">
         {isLoading ? (
-          <Skeleton height="20px" width="100px" mb={1} />
+          <Skeleton height={5} width="100px" mb={1} />
         ) : (
           <Text fontWeight="bold" fontSize="sm" color="text">
             {displayName}
           </Text>
         )}
         {isLoading ? (
-          <Skeleton height="16px" width="60px" />
+          <Skeleton height={4} width="60px" />
         ) : (
           <Text color="primary" fontSize="xs" fontWeight="medium">
             {userType?.name || "Patient"}

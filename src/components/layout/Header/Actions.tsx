@@ -9,11 +9,12 @@ const Actions = () => {
   );
 
   useEffect(() => {
-    document.addEventListener("fullscreenchange", () => {
+    const handleFullscreenChange = () => {
       setIsFullscreen((prev) => !prev);
-    });
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
     return () => {
-      document.removeEventListener("fullscreenchange", () => {});
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
   }, []);
 
@@ -33,6 +34,7 @@ const Actions = () => {
           cursor="pointer"
           onClick={handleToggleFullScreen}
           _hover={{ opacity: 0.8 }}
+          aria-label={isFullscreen ? "Close fullscreen" : "Open fullscreen"}
         >
           {isFullscreen ? (
             <FiMinimize color="primary" />

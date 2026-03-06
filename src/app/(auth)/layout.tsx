@@ -7,7 +7,7 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
     <Flex
       minH="100vh"
       w="full"
-      bg="#009CA6"
+      bg="primary"
       align="center"
       justify="center"
       p={4}

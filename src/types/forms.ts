@@ -1,6 +1,6 @@
 import { InputType } from "@/components/ui";
 
-export interface AuthFieldConfig {
+export type AuthFieldConfig = {
   label: string;
   type: InputType;
   placeholder: string;

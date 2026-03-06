@@ -25,7 +25,7 @@ export const NavItem = ({ icon, label, isCollapsed, href }: NavItemProps) => {
         _hover={{ bg: "whiteAlpha.200" }}
         justifyContent="flex-start"
         w="full"
-        h="48px"
+        h={12}
         px={3}
         onClick={() => href && router.push(href)}
       >

@@ -14,7 +14,7 @@ export const useUpdateUserExercise = () => {
   return useMutation({
     mutationKey: ["update-user-exercise"],
     mutationFn: async (params: UpdateUserExerciseParams) => {
-      if (!isAuthenticated) return new Error(UNAUTHORIZED);
+      if (!isAuthenticated) throw new Error(UNAUTHORIZED);
 
       await new Promise((resolve) =>
         setTimeout(resolve, params.status === "DONE" ? 5000 : 2000),

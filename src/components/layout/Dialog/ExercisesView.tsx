@@ -79,7 +79,7 @@ export const ExercisesDoneView = () => {
         Congratulations!
       </Text>
       <Text fontSize="xs" color="secondary" textAlign="center">
-        You have completed the exercise. Place wait while we process your data.
+        You have completed the exercise. Please wait while we process your data.
       </Text>
     </Flex>
   );
