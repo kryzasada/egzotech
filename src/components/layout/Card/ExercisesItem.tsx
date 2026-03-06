@@ -40,7 +40,7 @@ export const ExercisesItem = ({
     );
   }, [item.user_exercises.taskId, updateUserExercise, setDisabledAllButtons]);
 
-  const actionContent = !isDone && (
+  const actionContent = !isDone ? (
     <>
       <Button
         variant={isTodo ? "success" : "warning"}
@@ -63,12 +63,29 @@ export const ExercisesItem = ({
         onOpenChange={setDialogOpen}
       />
     </>
+  ) : (
+    <></>
+    // <Text
+    //   textAlign="center"
+    //   my={2}
+    //   px={{ base: 1, sm: 4 }}
+    //   fontSize="sm"
+    //   color="text"
+    // >
+    //   {status}
+    // </Text>
   );
 
   const CELL_CONTENT = [
     { value: item.exercises.title },
-    { value: formatDuration(item.user_exercises.durationSeconds) },
-    { value: `${item.user_exercises.load} ${item.user_exercises.unit}` },
+    {
+      value: formatDuration(item.user_exercises.durationSeconds),
+      mobileHidden: true,
+    },
+    {
+      value: `${item.user_exercises.load} ${item.user_exercises.unit}`,
+      mobileHidden: true,
+    },
     { value: status },
     { value: actionContent },
   ];
@@ -80,10 +97,19 @@ export const ExercisesItem = ({
           <Table.Cell
             align="center"
             my={2}
-            px={4}
+            px={{ base: 0, md: 4 }}
             key={content.value.toString()}
+            {...(content.mobileHidden
+              ? { display: { base: "none", md: "table-cell" } }
+              : {})}
           >
-            <Text textAlign="center" my={2} px={4} fontSize="sm" color="text">
+            <Text
+              textAlign="center"
+              my={2}
+              px={{ base: 1, sm: 4 }}
+              fontSize="sm"
+              color="text"
+            >
               {content.value}
             </Text>
           </Table.Cell>
@@ -103,7 +129,7 @@ export const ExercisesErrorItem = () => {
         align="center"
         my={2}
         px={4}
-        h="40px"
+        h={10}
         gap={4}
         w="full"
       >
@@ -123,7 +149,7 @@ export const NoExercisesItem = () => {
         align="center"
         my={2}
         px={4}
-        h="40px"
+        h={10}
         gap={4}
         alignItems="center"
         w="full"
@@ -150,7 +176,7 @@ export const LoadingExercisesItem = () => {
         align="center"
         my={6}
         px={4}
-        h="40px"
+        h={10}
         gap={4}
         alignItems="center"
         w="full"

@@ -17,6 +17,7 @@ export const Footer = () => {
       borderRadius={"xl"}
       bg="white"
       mb={5}
+      mt={5}
     >
       <Image
         src="/logo.png"
@@ -25,7 +26,7 @@ export const Footer = () => {
         height={40}
         style={{ objectFit: "contain" }}
       />
-      <Text fontSize="sm" color="text">
+      <Text fontSize="sm" color="text" display={{ base: "none", sm: "block" }}>
         © {currentYear} Egzotech. All rights reserved.
       </Text>
     </Flex>

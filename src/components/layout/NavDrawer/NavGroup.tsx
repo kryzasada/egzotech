@@ -31,6 +31,8 @@ export const NavGroup = ({ title, items, isCollapsed }: NavGroupProps) => {
         pl={4}
         whiteSpace="nowrap"
         overflow="hidden"
+        // @ts-expect-error - Chakrra UI types are not compatible with Next.js 15
+        display={{ base: "none", tablet: "block" }}
       >
         {title}
       </MotionText>

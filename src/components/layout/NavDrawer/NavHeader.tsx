@@ -19,7 +19,6 @@ export const NavHeader = ({ isCollapsed, onToggle }: NavHeaderProps) => {
       h={20}
       w="full"
       minW={12}
-      gap={isCollapsed ? 0 : 4}
     >
       <motion.div
         initial={{ opacity: 1, width: "auto" }}
@@ -29,17 +28,26 @@ export const NavHeader = ({ isCollapsed, onToggle }: NavHeaderProps) => {
         }}
         style={{ overflow: "hidden", whiteSpace: "nowrap" }}
       >
-        <Box position="relative" w="140px" h="50px" minW={12}>
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            fill
-            style={{
-              zIndex: 100,
-              objectFit: "contain",
-              filter: "brightness(0) invert(1)",
-            }}
-          />
+        <Box
+          position="relative"
+          w={40}
+          h="45px"
+          minW={12}
+          // @ts-expect-error - Chakrra UI types are not compatible with Next.js 15
+          display={{ base: "none", tablet: "block" }}
+        >
+          <Box as="span">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              fill
+              style={{
+                zIndex: 100,
+                objectFit: "contain",
+                filter: "brightness(0) invert(1)",
+              }}
+            />
+          </Box>
         </Box>
       </motion.div>
 
@@ -53,6 +61,8 @@ export const NavHeader = ({ isCollapsed, onToggle }: NavHeaderProps) => {
         ml={isCollapsed ? 0 : 4}
         rotate={isCollapsed ? "0deg" : "90deg"}
         transition="all 0.3s ease-in-out"
+        // @ts-expect-error - Chakrra UI types are not compatible with Next.js 15
+        display={{ base: "none", tablet: "block" }}
       >
         <Icon as={BsThreeDots} fontSize="md" />
       </IconButton>

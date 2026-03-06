@@ -17,18 +17,23 @@ export const DailyExercisesCard = () => {
   const [disabled, setDisabled] = useState(false);
 
   return (
-    <Card type="primary" px={4} py={4} h="min-content">
+    <Card type="primary" px={{ base: 0, sm: 4 }} py={4} h="min-content">
       <Flex direction="column" gap={4}>
-        <Heading fontSize="sm" fontWeight="bold" color="text">
+        <Heading
+          fontSize="sm"
+          fontWeight="bold"
+          color="text"
+          px={{ base: 4, sm: 0 }}
+        >
           Your Daily Exercises
         </Heading>
         <Flex direction="column" gap={4}>
           <Table.Root size="sm">
-            <Table.Header px={4}>
+            <Table.Header px={{ base: 0, sm: 4 }}>
               <Table.Row bg="background">
                 <ExercisesHeader title="Name" />
-                <ExercisesHeader title="Time" />
-                <ExercisesHeader title="Load" />
+                <ExercisesHeader mobileHidden title="Time" />
+                <ExercisesHeader mobileHidden title="Load" />
                 <ExercisesHeader title="Status" />
                 <ExercisesHeader title="Action" />
               </Table.Row>

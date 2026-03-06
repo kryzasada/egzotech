@@ -27,7 +27,7 @@ const Actions = () => {
   };
 
   return (
-    <HStack gap={6} color="primary">
+    <HStack gap={6} color="primary" display={{ base: "none", sm: "flex" }}>
       <Tooltip content={isFullscreen ? "Close Fullscreen" : "Open Fullscreen"}>
         <Icon
           fontSize="md"

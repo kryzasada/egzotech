@@ -27,7 +27,7 @@ export const Header = () => {
       px={8}
       py={4}
       align="center"
-      justify="flex-end"
+      justify={{ base: "center", sm: "flex-end" }}
       boxSizing="border-box"
       mx="auto"
       maxW={isScrolled ? "100%" : "97%"}

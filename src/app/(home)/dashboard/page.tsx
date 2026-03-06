@@ -7,11 +7,15 @@ import {
 
 export const DashboardPage = () => {
   return (
-    <Grid templateColumns={{ base: "1fr", md: "1fr 3fr" }} gap={4} w="full">
-      <Flex direction="column" gap={4}>
+    <Grid templateColumns={{ base: "1fr", xl: "1fr 3fr" }} gap={4} w="full">
+      <Grid
+        direction="column"
+        gap={4}
+        templateColumns={{ base: "1fr", md: "1fr 1fr", xl: "1fr" }}
+      >
         <ProfileCard />
         <PersonalInformationCard />
-      </Flex>
+      </Grid>
       <Flex direction="column" gap={4}>
         <DailyExercisesCard />
       </Flex>

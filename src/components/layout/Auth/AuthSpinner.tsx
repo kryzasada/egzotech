@@ -33,8 +33,8 @@ export const AuthSpinner = ({
         <Spinner
           color="primary"
           size="xl"
-          w={"50px"}
-          h={"50px"}
+          w={10}
+          h={10}
           style={{ borderWidth: "5px" }}
         />
       </Flex>

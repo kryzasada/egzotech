@@ -49,6 +49,8 @@ export const NavDrawer = () => {
       display="flex"
       flexDirection="column"
       zIndex={100}
+      // @ts-expect-error - Chakrra UI types are not compatible with Next.js 15
+      maxWidth={{ base: "0px", sm: "64px", tablet: "280px" }}
     >
       <NavHeader
         isCollapsed={isCollapsed}
