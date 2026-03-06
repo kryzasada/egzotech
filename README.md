@@ -47,21 +47,21 @@ This application was designed and built with production deployment in mind. Howe
 - **Database normalization** — The database structure should be reviewed for normalization.
 
 ## Database schema
-![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/supabase-schema.svg)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/supabase-schema.svg)
 
 ## Application
 
 #### Register Page
-![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-register.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-register.png)
 
 #### Home Page
-![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-home.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-home.png)
 
 #### Setting Page
-![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-settings.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-settings.png)
 
 #### Exercises Page
-![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-exercises.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-exercises.png)
 
 #### Exercise Task Modal
-![alt text](https://github.com/kryzasada/egzotech/blob/main/marketingimg/EGZOTech-exercise-task.png)
+![alt text](https://github.com/kryzasada/egzotech/blob/master/marketingimg/EGZOTech-exercise-task.png)
