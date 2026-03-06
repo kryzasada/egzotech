@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { UNAUTHORIZED } from "@/consts";
-import { updateUserCredentials } from "@/db/queries/data";
+import { updateUserCredentials } from "@/db/queries";
 import { AuthFormSchema } from "@/lib/validations";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -21,6 +21,7 @@ export const useUpdateUserCredentials = () => {
     onSuccess: () => {},
     onError: (error) => {
       console.error(error);
+      throw error;
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["current-user"] });

@@ -1,11 +1,12 @@
 import { useCallback, useState } from "react";
+import { LuInfo } from "react-icons/lu";
 import { EXERCISE_STATUS } from "@/consts";
 import { UserExerciseWithExercise } from "@/db/schema";
-import { formatDuration } from "@/helpers/date";
-import { For, Spinner, Table, Text } from "@chakra-ui/react";
-import { ExercisesDialog } from "@/components/layout/Dialog/ExercisesDialog";
-import { Button } from "@/components/ui";
-import { useUpdateUserExercise } from "@/hooks/db/useUpdateUserExercise";
+import { formatDateTime, formatDuration } from "@/helpers/date";
+import { Flex, For, Icon, Spinner, Table, Text } from "@chakra-ui/react";
+import { ExercisesDialog } from "@/components/layout";
+import { Button, Tooltip } from "@/components/ui";
+import { useUpdateUserExercise } from "@/hooks/db";
 
 interface ExercisesItemProps {
   item: UserExerciseWithExercise;
@@ -40,6 +41,20 @@ export const ExercisesItem = ({
     );
   }, [item.user_exercises.taskId, updateUserExercise, setDisabledAllButtons]);
 
+  const finishedExerciseInfo = (
+    <Flex direction="column" gap={2} fontSize="sm">
+      <Text fontSize="xs" color="white">
+        Started: {formatDateTime(item.user_exercises.startedAt)}
+      </Text>
+      <Text fontSize="xs" color="white">
+        Last activity: {formatDateTime(item.user_exercises.lastActivityAt)}
+      </Text>
+      <Text fontSize="xs" color="white">
+        Finished: {formatDateTime(item.user_exercises.completedAt)}
+      </Text>
+    </Flex>
+  );
+
   const actionContent = !isDone ? (
     <>
       <Button
@@ -64,16 +79,9 @@ export const ExercisesItem = ({
       />
     </>
   ) : (
-    <></>
-    // <Text
-    //   textAlign="center"
-    //   my={2}
-    //   px={{ base: 1, sm: 4 }}
-    //   fontSize="sm"
-    //   color="text"
-    // >
-    //   {status}
-    // </Text>
+    <Tooltip content={finishedExerciseInfo}>
+      <Icon as={LuInfo} fontSize="sm" color="secondary" />
+    </Tooltip>
   );
 
   const CELL_CONTENT = [

@@ -69,6 +69,9 @@ export type NewUserCredential = typeof userCredentials.$inferInsert;
 
 export const loginAttempts = pgTable("login_attempts", {
   id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
   count: integer("count").default(0).notNull(),
   successful: boolean("successful").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -143,7 +146,18 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   credentials: many(userCredentials),
   sessions: many(userSessions),
   userExercises: many(userExercises),
+  loginAttempts: many(loginAttempts),
 }));
+
+export const loginAttemptsRelations = relations(
+  loginAttempts,
+  ({ one }) => ({
+    user: one(users, {
+      fields: [loginAttempts.userId],
+      references: [users.id],
+    }),
+  }),
+);
 
 export const userTypesRelations = relations(userTypes, ({ many }) => ({
   users: many(users),

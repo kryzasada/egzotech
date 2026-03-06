@@ -1,5 +1,6 @@
 "use server";
 
+import { EXERCISE_STATUS, UNAUTHORIZED } from "@/consts";
 import { db } from "@/db";
 import {
   type exerciseStatusEnum,
@@ -17,7 +18,7 @@ import { and, eq } from "drizzle-orm";
 export const getUserProfile = async () => {
   const { session } = await requireUser();
   const email = session.user?.email;
-  if (!email) throw new Error("UNAUTHORIZED");
+  if (!email) throw new Error(UNAUTHORIZED);
 
   const result = await db
     .select({
@@ -72,10 +73,27 @@ export const updateUserExercise = async ({
   status,
 }: UpdateUserExerciseParams) => {
   const { userId } = await requireUser();
+  const now = new Date();
+
+  const [current] = await db
+    .select({ startedAt: userExercises.startedAt })
+    .from(userExercises)
+    .where(
+      and(eq(userExercises.userId, userId), eq(userExercises.taskId, taskId)),
+    );
+
+  const updates: Partial<typeof userExercises.$inferInsert> = { status };
+
+  if (status === EXERCISE_STATUS.STARTED) {
+    updates.lastActivityAt = now;
+    updates.startedAt = current?.startedAt ?? now;
+  } else if (status === EXERCISE_STATUS.DONE) {
+    updates.completedAt = now;
+  }
 
   return await db
     .update(userExercises)
-    .set({ status: status })
+    .set(updates)
     .where(
       and(eq(userExercises.userId, userId), eq(userExercises.taskId, taskId)),
     );

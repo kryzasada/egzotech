@@ -18,7 +18,7 @@ import {
 import { Button, Input } from "@/components/ui";
 import { Card } from "@/components/ui";
 import { useCurrentUser } from "@/hooks/db";
-import { useUpdateUserCredentials } from "@/hooks/db/useUpdateUserCredentials";
+import { useUpdateUserCredentials } from "@/hooks/db";
 
 type AuthFormValues = {
   email: string;

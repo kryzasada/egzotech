@@ -3,7 +3,7 @@ import { UNAUTHORIZED } from "@/consts";
 import {
   type UpdateUserExerciseParams,
   updateUserExercise,
-} from "@/db/queries/data";
+} from "@/db/queries";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useUpdateUserExercise = () => {
@@ -25,6 +25,7 @@ export const useUpdateUserExercise = () => {
     onSuccess: () => {},
     onError: (error) => {
       console.error(error);
+      throw error;
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ["user-exercises"] });

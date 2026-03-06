@@ -1,8 +1,10 @@
+"use client";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { EXERCISE_STATUS } from "@/consts";
 import type { UserExerciseWithExercise } from "@/db/schema";
 import { CloseButton, Dialog, Portal, Separator } from "@chakra-ui/react";
-import { useUpdateUserExercise } from "@/hooks/db/useUpdateUserExercise";
+import { useUpdateUserExercise } from "@/hooks/db";
 import { ExercisesDoneView, ExercisesTaskView } from "./ExercisesView";
 
 type ExercisesDialogProps = {

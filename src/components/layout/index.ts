@@ -9,3 +9,4 @@ export * from "./Setting/AuthForm";
 export * from "./Card/ProfileCard";
 export * from "./Card/DailyExercisesCard";
 export * from "./Card/PersonalInformationCard";
+export * from "./Dialog/ExercisesDialog";

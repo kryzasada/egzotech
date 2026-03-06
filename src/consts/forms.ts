@@ -27,11 +27,3 @@ export enum AUTH_FORM_ERROR_MESSAGE {
   PasswordInvalid = "Password must be at least 8 characters, uppercase letter and number",
   PasswordsDoNotMatch = "Passwords do not match",
 }
-
-export const UNAUTHORIZED = "UNAUTHORIZED";
-
-export const EXERCISE_STATUS = {
-  TODO: "TODO",
-  STARTED: "STARTED",
-  DONE: "DONE",
-} as const;
