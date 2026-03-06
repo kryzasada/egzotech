@@ -18,6 +18,8 @@ export enum USERTYPE {
 
 export enum PERSONAL_FORM_ERROR_MESSAGE {
   UpdateFailed = "Failed to update data. Please try again later",
+  FieldRequired = "Field is required",
+  TooLong = "Maximum length is 25 characters",
   HeightInvalid = "Height must be between 100 and 250 cm",
   WeightInvalid = "Weight must be between 20 and 500 kg",
 }

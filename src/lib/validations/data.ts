@@ -3,8 +3,14 @@ import { genderEnum } from "@/db/schema";
 import { z } from "zod";
 
 export const personalFormSchema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z
+    .string()
+    .min(1, { message: PERSONAL_FORM_ERROR_MESSAGE.FieldRequired })
+    .max(25, { message: PERSONAL_FORM_ERROR_MESSAGE.TooLong }),
+  lastName: z
+    .string()
+    .min(1, { message: PERSONAL_FORM_ERROR_MESSAGE.FieldRequired })
+    .max(25, { message: PERSONAL_FORM_ERROR_MESSAGE.TooLong }),
   gender: z.enum(genderEnum.enumValues),
   height: z
     .number()
