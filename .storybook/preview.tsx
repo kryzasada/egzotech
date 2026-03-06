@@ -4,6 +4,12 @@ import Providers from "../src/components/Providers";
 
 const preview: Preview = {
   parameters: {
+    nextjs: {
+      appDirectory: true,
+      navigation: {
+        pathname: "/dashboard",
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

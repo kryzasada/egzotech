@@ -5,5 +5,15 @@ const config: StorybookConfig = {
   addons: [],
   framework: "@storybook/nextjs",
   staticDirs: ["..\\public"],
+  webpackFinal: async (config) => {
+    config.resolve = config.resolve ?? {};
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      net: false,
+      tls: false,
+      perf_hooks: false,
+    };
+    return config;
+  },
 };
 export default config;
