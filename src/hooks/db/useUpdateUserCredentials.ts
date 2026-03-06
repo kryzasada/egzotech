@@ -1,4 +1,5 @@
 import { useSession } from "next-auth/react";
+import { UNAUTHORIZED } from "@/consts";
 import { updateUserCredentials } from "@/db/queries/data";
 import { AuthFormSchema } from "@/lib/validations";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -11,7 +12,7 @@ export const useUpdateUserCredentials = () => {
   return useMutation({
     mutationKey: ["update-user-data"],
     mutationFn: async (userData: AuthFormSchema) => {
-      if (!isAuthenticated) return new Error("UNAUTHORIZED");
+      if (!isAuthenticated) return new Error(UNAUTHORIZED);
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
 

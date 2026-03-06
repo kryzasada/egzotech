@@ -3,8 +3,9 @@
 import { ComponentProps, useState } from "react";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
+import { REGISTER_USER_ERROR_MESSAGE } from "@/consts";
 import { registerUserFormSchema } from "@/lib/validations";
-import { AuthFieldConfig, REGISTER_USER_ERROR_MESSAGE } from "@/types";
+import { AuthFieldConfig } from "@/types";
 import {
   Alert,
   Box,
@@ -106,7 +107,7 @@ export const RegisterForm = () => {
   return (
     <Box as="form" onSubmit={handleRegister}>
       <VStack gap={8} align="stretch">
-        <Heading size="lg" color="gray.800">
+        <Heading size="lg" color="text">
           Sign Up
         </Heading>
 
@@ -124,7 +125,7 @@ export const RegisterForm = () => {
             {(field) => (
               <Box w="full" key={field.label}>
                 <Flex justify="space-between" align="center" mb={2}>
-                  <Text fontSize="sm" fontWeight="medium" color="gray.600">
+                  <Text fontSize="sm" fontWeight="medium" color="textSecondary">
                     {field.label}
                   </Text>
                 </Flex>
@@ -159,9 +160,9 @@ export const RegisterForm = () => {
           {isPending ? <Spinner size="md" /> : "Sign Up"}
         </Button>
 
-        <Text textAlign="center" fontSize="sm" color="gray.500">
+        <Text textAlign="center" fontSize="sm" color="textSecondary">
           Already have an account?{" "}
-          <Link asChild color="#009CA6" fontWeight="semibold">
+          <Link asChild color="primary" fontWeight="semibold">
             <NextLink href="/login">Sign In</NextLink>
           </Link>
         </Text>

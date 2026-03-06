@@ -35,6 +35,7 @@ export const NavHeader = ({ isCollapsed, onToggle }: NavHeaderProps) => {
             alt="Logo"
             fill
             style={{
+              zIndex: 100,
               objectFit: "contain",
               filter: "brightness(0) invert(1)",
             }}

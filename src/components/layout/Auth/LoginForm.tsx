@@ -4,8 +4,9 @@ import { ComponentProps, useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import NextLink from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { LOGIN_USER_ERROR_MESSAGE } from "@/consts";
 import { loginUserSchema } from "@/lib/validations";
-import { AuthFieldConfig, LOGIN_USER_ERROR_MESSAGE } from "@/types";
+import { AuthFieldConfig } from "@/types";
 import {
   Alert,
   Box,
@@ -89,7 +90,7 @@ export const LoginForm = () => {
   return (
     <Box as="form" onSubmit={handleLogin}>
       <VStack gap={8} align="stretch">
-        <Heading size="lg" color="gray.800">
+        <Heading size="lg" color="text">
           Sign In
         </Heading>
 
@@ -116,7 +117,7 @@ export const LoginForm = () => {
             {(field) => (
               <Box w="full" key={field.label}>
                 <Flex justify="space-between" align="center" mb={2}>
-                  <Text fontSize="sm" fontWeight="medium" color="gray.600">
+                  <Text fontSize="sm" fontWeight="medium" color="textSecondary">
                     {field.label}
                   </Text>
                 </Flex>
@@ -143,9 +144,9 @@ export const LoginForm = () => {
           {isLoading ? <Spinner size="md" /> : "Sign In"}
         </Button>
 
-        <Text textAlign="center" fontSize="sm" color="gray.500">
+        <Text textAlign="center" fontSize="sm" color="textSecondary">
           Don&apos;t have an account?{" "}
-          <Link asChild color="#009CA6" fontWeight="semibold">
+          <Link asChild color="primary" fontWeight="semibold">
             <NextLink href="/register">Sign Up</NextLink>
           </Link>
         </Text>

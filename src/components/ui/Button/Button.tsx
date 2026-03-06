@@ -26,10 +26,10 @@ interface ButtonProps extends Omit<ChakraButtonProps, "variant" | "rightIcon"> {
 const variantColors: Record<ButtonVariant, string> = {
   primary: "primary",
   secondary: "secondary",
-  success: "#51c032",
-  danger: "#ed575f",
-  warning: "#f36a1b",
-  info: "#28b1bf",
+  success: "success",
+  danger: "danger",
+  warning: "warning",
+  info: "info",
 };
 
 export const Button = ({

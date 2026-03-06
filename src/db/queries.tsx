@@ -11,11 +11,11 @@ import {
 import { hash } from "bcryptjs";
 import { eq } from "drizzle-orm";
 
-export const getUserTypes = async () => {
+export async function getUserTypes() {
   return await db.select().from(userTypes);
-};
+}
 
-export const getUserByEmail = async (email: string) => {
+export async function getUserByEmail(email: string) {
   const result = await db
     .select({
       user: users,
@@ -26,12 +26,12 @@ export const getUserByEmail = async (email: string) => {
     .where(eq(userCredentials.email, email));
 
   return result[0];
-};
+}
 
-export const createUserSession = async (
+export async function createUserSession(
   userId: string,
   refreshTokenHash: string,
-) => {
+) {
   const expiresAt = new Date();
   expiresAt.setDate(expiresAt.getDate() + 10); // 10 days
 
@@ -40,19 +40,19 @@ export const createUserSession = async (
     refreshTokenHash,
     expiresAt,
   });
-};
+}
 
-export const checkIfUserExists = async (email: string) => {
+export async function checkIfUserExists(email: string) {
   return await db
     .select()
     .from(userCredentials)
     .where(eq(userCredentials.email, email))
     .then((result) => result.length > 0);
-};
+}
 
-export const registerUser = async (
+export async function registerUser(
   userData: newUser & { email: string; password: string },
-) => {
+) {
   const { email, password, ...userInfo } = userData;
 
   const hashedPassword = await hash(password, 10);
@@ -68,4 +68,4 @@ export const registerUser = async (
 
     return newUser;
   });
-};
+}

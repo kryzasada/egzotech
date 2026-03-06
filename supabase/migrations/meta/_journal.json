@@ -15,6 +15,20 @@
       "when": 1772740612663,
       "tag": "0001_lucky_vision",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1772755794060,
+      "tag": "0002_blue_crystal",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1772756422410,
+      "tag": "0003_dry_firedrake",
+      "breakpoints": true
     }
   ]
 }

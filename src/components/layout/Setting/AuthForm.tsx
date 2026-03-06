@@ -1,8 +1,9 @@
 "use client";
 
 import { ComponentProps, useMemo, useState } from "react";
+import { AUTH_FORM_ERROR_MESSAGE } from "@/consts";
 import { authFormSchema } from "@/lib/validations";
-import { AUTH_FORM_ERROR_MESSAGE, type DataFieldConfig } from "@/types";
+import { type DataFieldConfig } from "@/types";
 import {
   Alert,
   Box,

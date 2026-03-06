@@ -5,6 +5,7 @@ import {
   integer,
   pgEnum,
   pgTable,
+  primaryKey,
   text,
   timestamp,
   uuid,
@@ -12,6 +13,11 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const genderEnum = pgEnum("gender", ["female", "male"]);
+export const exerciseStatusEnum = pgEnum("exercises_status", [
+  "TODO",
+  "STARTED",
+  "DONE",
+]);
 
 /*
  Tables
@@ -43,7 +49,7 @@ export const users = pgTable("users", {
   lockedUntil: timestamp("locked_until"),
 });
 
-export type NewUser = typeof users.$inferInsert;
+export type newUser = typeof users.$inferInsert;
 
 export const userCredentials = pgTable("user_credentials", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -79,6 +85,53 @@ export const userSessions = pgTable("user_sessions", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const exercises = pgTable("exercises", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  title: text("title").notNull(),
+  description: text("description"),
+  isActive: boolean("is_active").notNull().default(true),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .notNull()
+    .$onUpdate(() => new Date()),
+});
+
+export type NewExercise = typeof exercises.$inferInsert;
+
+export const userExercises = pgTable(
+  "user_exercises",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    taskId: uuid("task_id")
+      .notNull()
+      .references(() => exercises.id, { onDelete: "cascade" }),
+    status: exerciseStatusEnum("status").notNull().default("TODO"),
+    durationSeconds: integer("duration_seconds").notNull().default(15),
+    load: integer("load").notNull().default(10),
+    unit: text("unit").notNull().default("kg"),
+    startedAt: timestamp("started_at"),
+    completedAt: timestamp("completed_at"),
+    lastActivityAt: timestamp("last_activity_at"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .notNull()
+      .$onUpdate(() => new Date()),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.taskId] })],
+);
+
+export type NewUserExercise = typeof userExercises.$inferInsert;
+export type UserExercise = typeof userExercises.$inferSelect;
+
+export type UserExerciseWithExercise = {
+  user_exercises: UserExercise;
+  exercises: typeof exercises.$inferSelect;
+};
+
 /*
  Relations between tables
 */
@@ -89,6 +142,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   }),
   credentials: many(userCredentials),
   sessions: many(userSessions),
+  userExercises: many(userExercises),
 }));
 
 export const userTypesRelations = relations(userTypes, ({ many }) => ({
@@ -109,5 +163,20 @@ export const userSessionsRelations = relations(userSessions, ({ one }) => ({
   user: one(users, {
     fields: [userSessions.userId],
     references: [users.id],
+  }),
+}));
+
+export const exercisesRelations = relations(exercises, ({ many }) => ({
+  userExercises: many(userExercises),
+}));
+
+export const userExercisesRelations = relations(userExercises, ({ one }) => ({
+  user: one(users, {
+    fields: [userExercises.userId],
+    references: [users.id],
+  }),
+  exercise: one(exercises, {
+    fields: [userExercises.taskId],
+    references: [exercises.id],
   }),
 }));

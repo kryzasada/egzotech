@@ -16,7 +16,7 @@ const MENU_GROUPS = [
     title: "Dashboard",
     items: [
       { icon: FaHome, label: "Home", href: "/dashboard" },
-      { icon: FaCalendarDay, label: "Calendar", href: "/calendar" },
+      { icon: FaCalendarDay, label: "Daily Exercises", href: "/exercises" },
     ],
   },
   {

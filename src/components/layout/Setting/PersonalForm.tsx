@@ -1,8 +1,9 @@
 "use client";
 
 import { ComponentProps, useMemo, useState } from "react";
+import { PERSONAL_FORM_ERROR_MESSAGE } from "@/consts";
 import { personalFormSchema } from "@/lib/validations";
-import { type DataFieldConfig, PERSONAL_FORM_ERROR_MESSAGE } from "@/types";
+import { type DataFieldConfig } from "@/types";
 import {
   Alert,
   Box,
@@ -70,12 +71,20 @@ export const PersonalForm = () => {
     });
   };
 
-  const hasChanges = useMemo(
+  const hasValueChanges = useMemo(
     () =>
       (Object.keys(formValues) as (keyof PersonalFormValues)[]).some(
         (key) => formValues[key] !== defaultValues[key],
       ),
     [formValues, defaultValues],
+  );
+
+  const isValueEmpty = useMemo(
+    () =>
+      (Object.keys(formValues) as (keyof PersonalFormValues)[]).some(
+        (key) => String(formValues[key]).trim() === "",
+      ),
+    [formValues],
   );
 
   const PERSONAL_DATA_FIELDS: DataFieldConfig<PersonalFormValues>[] = [
@@ -91,6 +100,7 @@ export const PersonalForm = () => {
       key: "lastName",
       type: "text",
       placeholder: "Enter last name",
+      isInvalid: formValues.lastName.trim() === "",
     },
     {
       label: "Weight (kg)",
@@ -167,13 +177,13 @@ export const PersonalForm = () => {
                 bg="white"
                 border="1px solid"
                 borderColor={
-                  formValues.gender.trim() === "" ? "red.500" : "secondary"
+                  formValues.gender.trim() === "" ? "danger" : "secondary"
                 }
                 color="text"
                 borderRadius="md"
                 _focus={{
                   borderColor:
-                    formValues.gender.trim() === "" ? "red.500" : "secondary",
+                    formValues.gender.trim() === "" ? "danger" : "secondary",
                   outline: "none",
                   boxShadow: "none",
                 }}
@@ -215,7 +225,7 @@ export const PersonalForm = () => {
 
           <Button
             type="submit"
-            disabled={isPending || !hasChanges}
+            disabled={isPending || !hasValueChanges || isValueEmpty}
             btnType="fill"
             variant="primary"
             size="lg"

@@ -55,14 +55,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         bg="white"
         border="1px solid"
         color="text"
-        borderColor={isInvalid ? "red.500" : "secondary"}
+        borderColor={isInvalid ? "danger" : "secondary"}
         _focus={{
-          borderColor: isInvalid ? "red.500" : "secondary",
+          borderColor: isInvalid ? "danger" : "secondary",
           outline: "none",
           boxShadow: "none",
         }}
         _invalid={{
-          borderColor: "red.500",
+          borderColor: "danger",
         }}
         borderRadius="md"
         {...props}

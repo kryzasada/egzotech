@@ -1,5 +1,5 @@
+import { AUTH_FORM_ERROR_MESSAGE, PERSONAL_FORM_ERROR_MESSAGE } from "@/consts";
 import { genderEnum } from "@/db/schema";
-import { AUTH_FORM_ERROR_MESSAGE, PERSONAL_FORM_ERROR_MESSAGE } from "@/types";
 import { z } from "zod";
 
 export const personalFormSchema = z.object({

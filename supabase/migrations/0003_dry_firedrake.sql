@@ -1,0 +1,1 @@
+ALTER TABLE "user_exercises" RENAME COLUMN "slug" TO "load";

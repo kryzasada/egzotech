@@ -1,4 +1,4 @@
-import { REGISTER_USER_ERROR_MESSAGE } from "@/types";
+import { REGISTER_USER_ERROR_MESSAGE } from "@/consts";
 import { z } from "zod";
 
 export const registerUserFormSchema = z

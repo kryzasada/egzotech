@@ -7,3 +7,5 @@ export * from "./Auth/RegisterForm";
 export * from "./Setting/PersonalForm";
 export * from "./Setting/AuthForm";
 export * from "./Card/ProfileCard";
+export * from "./Card/DailyExercisesCard";
+export * from "./Card/PersonalInformationCard";

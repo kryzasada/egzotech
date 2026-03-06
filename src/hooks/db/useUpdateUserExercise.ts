@@ -1,29 +1,33 @@
 import { useSession } from "next-auth/react";
 import { UNAUTHORIZED } from "@/consts";
-import { updateUserData } from "@/db/queries/data";
-import { PersonalFormSchema } from "@/lib/validations";
+import {
+  type UpdateUserExerciseParams,
+  updateUserExercise,
+} from "@/db/queries/data";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export const useUpdateUserData = () => {
+export const useUpdateUserExercise = () => {
   const queryClient = useQueryClient();
   const { status } = useSession();
   const isAuthenticated = status === "authenticated";
 
   return useMutation({
-    mutationKey: ["update-user-data"],
-    mutationFn: async (userData: PersonalFormSchema) => {
+    mutationKey: ["update-user-exercise"],
+    mutationFn: async (params: UpdateUserExerciseParams) => {
       if (!isAuthenticated) return new Error(UNAUTHORIZED);
 
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) =>
+        setTimeout(resolve, params.status === "DONE" ? 5000 : 2000),
+      );
 
-      return await updateUserData({ ...userData });
+      return await updateUserExercise(params);
     },
     onSuccess: () => {},
     onError: (error) => {
       console.error(error);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ["current-user"] });
+      queryClient.invalidateQueries({ queryKey: ["user-exercises"] });
     },
   });
 };

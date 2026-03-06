@@ -1,7 +1,9 @@
 import { Flex, Grid } from "@chakra-ui/react";
 import { ProfileCard } from "@/components/layout";
-import { DailyExercisesCard } from "@/components/layout/Card/DailyExercisesCard";
-import { PersonalInformationCard } from "@/components/layout/Card/PersonalInformationCard";
+import {
+  DailyExercisesCard,
+  PersonalInformationCard,
+} from "@/components/layout";
 
 export const DashboardPage = () => {
   return (

@@ -26,7 +26,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             variant="ghost"
             onClick={handleTogglePassword}
             size="sm"
-            color="gray.500"
+            color="textSecondary"
             _hover={{ bg: "transparent" }}
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -40,9 +40,9 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           bg="white"
           border="1px solid"
           color="text"
-          borderColor={props["aria-invalid"] ? "red.500" : "secondary"}
+          borderColor={props["aria-invalid"] ? "danger" : "secondary"}
           _focus={{
-            borderColor: props["aria-invalid"] ? "red.500" : "secondary",
+            borderColor: props["aria-invalid"] ? "danger" : "secondary",
             outline: "none",
             boxShadow: "none",
           }}

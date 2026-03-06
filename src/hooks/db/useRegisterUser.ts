@@ -1,10 +1,10 @@
+import { REGISTER_USER_ERROR_MESSAGE, USERTYPE } from "@/consts";
 import { checkIfUserExists, registerUser } from "@/db/queries";
 import {
   RegisterUserFormSchema,
   registerUserDbSchema,
 } from "@/lib/validations";
 import { useMutation } from "@tanstack/react-query";
-import { REGISTER_USER_ERROR_MESSAGE, USERTYPE } from "@/types/forms";
 import { useGetUserTypes } from "./useGetUserTypes";
 
 export const useRegisterUser = () => {
